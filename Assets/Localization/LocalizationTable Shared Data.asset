@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: LocalizationTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: LocalizationTable
+  m_TableCollectionNameGuidString: 6ce4a1b1683224242939d3adaf7133c1
+  m_Entries:
+  - m_Id: 41233770721280
+    m_Key: TurnPlayer_Self
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41386653102080
+    m_Key: TurnPlayer_Opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85232015486976
+    m_Key: OneMoreGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85319202484224
+    m_Key: BackToMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89704112435200
+    m_Key: GameDraw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90013056479232
+    m_Key: Win_Self
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90065841795072
+    m_Key: Win_Opponent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95269555384320
+    m_Key: GameTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96143191158784
+    m_Key: GameStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96287529742336
+    m_Key: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96365321498624
+    m_Key: RuleIntroduction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103179337445376
+    m_Key: Surrender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 325503865171968
+    m_Key: YouGoingFirst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 325688305496064
+    m_Key: OpponentGoingFirst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 325870669639680
+    m_Key: Coining
+    m_Metadata:
+      m_Items: []
+  - m_Id: 336629629825024
+    m_Key: ReturnStep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346453142777856
+    m_Key: IsStartState
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351174142308352
+    m_Key: SaveReplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 359669986078720
+    m_Key: Hint_AlreadySaved
+    m_Metadata:
+      m_Items: []
+  - m_Id: 369485227864064
+    m_Key: NextStep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 369503494057984
+    m_Key: LastStep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371959066112000
+    m_Key: Thinking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 372454786707456
+    m_Key: ReplayOver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386873897889792
+    m_Key: ViewReplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 392669444550656
+    m_Key: Play_Replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 392755264204800
+    m_Key: Delete_Replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442794091065344
+    m_Key: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442863225778176
+    m_Key: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449149141102592
+    m_Key: AskDelete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 460162234167296
+    m_Key: AskPlayReplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 465236909993984
+    m_Key: NumOfStep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 467300683722752
+    m_Key: IsReplayStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1086651103293440
+    m_Key: SimpleAI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1086738080575488
+    m_Key: HardAI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1086806938464256
+    m_Key: InvincibleAI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087519869480960
+    m_Key: PlayWithFriend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1088238437642240
+    m_Key: GameModeSelect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1091715779899392
+    m_Key: NoReplayRecorded
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1096299864764416
+    m_Key: GameOver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1167800576094208
+    m_Key: SEVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1167883514261504
+    m_Key: FirstPlayerSet_UsedInAI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1168325128335360
+    m_Key: LanguageSet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1168411866542080
+    m_Key: ChessPattern
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4208694192902242328
+  references:
+    version: 2
+    RefIds:
+    - rid: 4208694192902242328
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1712136173158

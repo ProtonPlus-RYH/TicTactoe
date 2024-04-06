@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LocalizationTable_en-GB
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-GB
+  m_SharedData: {fileID: 11400000, guid: 6ce4a1b1683224242939d3adaf7133c1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 41233770721280
+    m_Localized: Your Turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41386653102080
+    m_Localized: Opponent's Turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85232015486976
+    m_Localized: Play Again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85319202484224
+    m_Localized: To Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 89704112435200
+    m_Localized: Draw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90013056479232
+    m_Localized: You Win
+    m_Metadata:
+      m_Items: []
+  - m_Id: 90065841795072
+    m_Localized: Your opponent Wins
+    m_Metadata:
+      m_Items: []
+  - m_Id: 95269555384320
+    m_Localized: Tic-Tac-toe_ Made By ProtonPlus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96143191158784
+    m_Localized: Game Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96287529742336
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96365321498624
+    m_Localized: Introduce Rules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 103179337445376
+    m_Localized: Surrender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 325503865171968
+    m_Localized: You're Going First
+    m_Metadata:
+      m_Items: []
+  - m_Id: 325688305496064
+    m_Localized: AI Goes First
+    m_Metadata:
+      m_Items: []
+  - m_Id: 325870669639680
+    m_Localized: Waiting for the coin......
+    m_Metadata:
+      m_Items: []
+  - m_Id: 336629629825024
+    m_Localized: Undo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346453142777856
+    m_Localized: It's already the state that Game just initialized
+    m_Metadata:
+      m_Items: []
+  - m_Id: 351174142308352
+    m_Localized: Save Replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 359669986078720
+    m_Localized: Saved Already
+    m_Metadata:
+      m_Items: []
+  - m_Id: 369503494057984
+    m_Localized: Last Step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 369485227864064
+    m_Localized: Next Step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 371959066112000
+    m_Localized: Thinking...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 372454786707456
+    m_Localized: Replay Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 386873897889792
+    m_Localized: View Replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 392669444550656
+    m_Localized: View
+    m_Metadata:
+      m_Items: []
+  - m_Id: 392755264204800
+    m_Localized: Delete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442794091065344
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 442863225778176
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449149141102592
+    m_Localized: Are you sure to delete Replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 460162234167296
+    m_Localized: 'Play the replay '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 465236909993984
+    m_Localized: Current count of step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 467300683722752
+    m_Localized: It's already the start point of replay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1086651103293440
+    m_Localized: 'AI: Simple'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1086738080575488
+    m_Localized: 'AI: Hard'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1086806938464256
+    m_Localized: 'AI: Invincible'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1087519869480960
+    m_Localized: Play with friend Offline
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1088238437642240
+    m_Localized: Game Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1091715779899392
+    m_Localized: There's no replay recorded.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1096299864764416
+    m_Localized: Game Over
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1167800576094208
+    m_Localized: Sound Effect Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1167883514261504
+    m_Localized: Set Player to Go First (only in versus AI mode)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1168325128335360
+    m_Localized: Language Set
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1168411866542080
+    m_Localized: Chess Pattern
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
