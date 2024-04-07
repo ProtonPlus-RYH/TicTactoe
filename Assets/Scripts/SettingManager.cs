@@ -8,6 +8,11 @@ using UnityEngine.UI;
 
 public class SettingManager : MonoBehaviour
 {
+    private BGMPlayer BgmPlayer;
+    private int BGMVolume;
+    public TextMeshProUGUI BGM_TMP;
+    public Slider BGMSlider;
+
     private int SEVolume;
     public TextMeshProUGUI SE_TMP;
     public Slider SESlider;
@@ -20,17 +25,29 @@ public class SettingManager : MonoBehaviour
     public Toggle SCLangToggle;
     public Toggle ENLangToggle;
 
+    public TMP_Dropdown PlayerPatternDropDown;
+    public TMP_Dropdown AIPatternDropDown;
+
     void Start()
     {
         //音量初始化
-        if (PlayerPrefs.HasKey("SEVolume"))
+        if (!PlayerPrefs.HasKey("BGMVolume"))
         {
-            SESlider.value = PlayerPrefs.GetInt("SEVolume");
+            PlayerPrefs.SetInt("BGMVolume",50);
         }
-        else
+        BGMSlider.value = PlayerPrefs.GetInt("BGMVolume");
+        SetBGMVolume();
+        BgmPlayer = FindObjectOfType<BGMPlayer>();
+        if (BgmPlayer!=null)
         {
-            SESlider.value = 50;
+            BgmPlayer.GetComponent<AudioSource>().volume = BGMVolume * 0.01f;
         }
+        if (!PlayerPrefs.HasKey("SEVolume"))
+        {
+            PlayerPrefs.SetInt("SEVolume", 50);
+        }
+        SESlider.value = PlayerPrefs.GetInt("SEVolume");
+        SetSEVolume();
 
         //先后手初始化
         ifPlayerGoFirst = false;
@@ -57,9 +74,33 @@ public class SettingManager : MonoBehaviour
         {
             ENLangToggle.isOn = true;
         }
+
+        //棋子样式选择初始化
+        if (!PlayerPrefs.HasKey("PlayerChessPattern"))
+        {
+            PlayerPrefs.SetInt("PlayerChessPattern", 4);
+        }
+        PlayerPatternDropDown.SetValueWithoutNotify(PlayerPrefs.GetInt("PlayerChessPattern")-1);
+        if (!PlayerPrefs.HasKey("AIChessPattern"))
+        {
+            PlayerPrefs.SetInt("AIChessPattern", 3);
+        }
+        AIPatternDropDown.SetValueWithoutNotify(PlayerPrefs.GetInt("AIChessPattern")-1);
     }
 
-    #region SE volume settings
+    #region Volume settings
+
+    public void SetBGMVolume()
+    {
+        BGMVolume = (int)BGMSlider.value;
+        BGM_TMP.text = BGMVolume.ToString();
+        PlayerPrefs.SetInt("BGMVolume", BGMVolume);
+        if (BgmPlayer != null)
+        {
+            BgmPlayer.GetComponent<AudioSource>().volume = BGMVolume * 0.01f;
+        }
+    }
+
 
     public void SetSEVolume()
     {
@@ -120,6 +161,21 @@ public class SettingManager : MonoBehaviour
         {
             LanguageManager.Instance.languageSelect(1);
         }
+    }
+
+    #endregion
+
+
+    #region Pattern setting
+
+    public void SetPlayerPattern()
+    {
+        PlayerPrefs.SetInt("PlayerChessPattern", PlayerPatternDropDown.value + 1);
+    }
+
+    public void SetAIPattern()
+    {
+        PlayerPrefs.SetInt("AIChessPattern", AIPatternDropDown.value + 1);
     }
 
     #endregion

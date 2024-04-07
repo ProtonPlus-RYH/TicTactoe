@@ -10,7 +10,7 @@ public class DialogManager : MonoBehaviour
     public string title;
     void Start()
     {
-        SetTitle("Title there");
+        //SetTitle("Title there");
     }
 
     public void ShowDialog()

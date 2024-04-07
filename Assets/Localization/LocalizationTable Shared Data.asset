@@ -187,6 +187,14 @@ MonoBehaviour:
     m_Key: ChessPattern
     m_Metadata:
       m_Items: []
+  - m_Id: 1441836568784896
+    m_Key: BGMVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1463596429193216
+    m_Key: RuleText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

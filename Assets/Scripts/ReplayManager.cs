@@ -17,8 +17,7 @@ public class ReplayManager : MonoBehaviour
     private int stepCount;
     public TextMeshProUGUI StepCountTMP;
 
-    public GameObject FirstChess;
-    public GameObject SecondChess;
+    public GameObject ChessObj;
 
     private List<string> GameReplay;
 
@@ -85,12 +84,14 @@ public class ReplayManager : MonoBehaviour
         {
             if (ifFirstPlayer)
             {
-                Instantiate(FirstChess, ChessTransform[xPosition][yPosition]);
+                GameObject firstPlayerChess = Instantiate(ChessObj, ChessTransform[xPosition][yPosition]);
+                firstPlayerChess.GetComponent<Chess>().ChangePattern(PlayerPrefs.GetInt("PlayerChessPattern"));
                 ChessBoard[xPosition][yPosition] = 1;
             }
             else
             {
-                Instantiate(SecondChess, ChessTransform[xPosition][yPosition]);
+                GameObject secondPlayerChess = Instantiate(ChessObj, ChessTransform[xPosition][yPosition]);
+                secondPlayerChess.GetComponent<Chess>().ChangePattern(PlayerPrefs.GetInt("AIChessPattern"));
                 ChessBoard[xPosition][yPosition] = -1;
             }
         }

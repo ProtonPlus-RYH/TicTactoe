@@ -18,12 +18,12 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
     public bool ifPause;
     [HideInInspector]
     public int turnCount;
-    public GameObject PlayerChess;
-    public GameObject OpponentChess;
+    public GameObject ChessObj;
+    public GameObject Chess1Image;
+    public GameObject Chess2Image;
 
     private List<string> GameReplay;
 
-    //public TextMeshProUGUI TurnPlayerTMP;
     public Transform TurnPlayerTransform;
     public TextMeshProUGUI HintTMP;
 
@@ -32,12 +32,24 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
     public GameObject GameOverDialog;
     public TextMeshProUGUI GameResultTMP;
 
+    [HideInInspector]
     public bool ifVersusAI;
     public GameObject TTTAI;
 
     void Start()
     {
         DoPause();
+
+        if (!PlayerPrefs.HasKey("AIChessPattern"))
+        {
+            PlayerPrefs.SetInt("AIChessPattern", 3);
+        }
+        if (!PlayerPrefs.HasKey("PlayerChessPattern"))
+        {
+            PlayerPrefs.SetInt("PlayerChessPattern", 4);
+        }
+        Chess1Image.GetComponent<Chess>().ChangePattern(PlayerPrefs.GetInt("PlayerChessPattern"));
+        Chess2Image.GetComponent<Chess>().ChangePattern(PlayerPrefs.GetInt("AIChessPattern"));
 
         if (PlayerPrefs.HasKey("AISuccessRate"))
         {
@@ -147,12 +159,14 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
             {
                 if (ifSelf)
                 {
-                    Instantiate(PlayerChess, ChessTransform[xPosition][yPosition]);
+                    GameObject playerChess = Instantiate(ChessObj, ChessTransform[xPosition][yPosition]);
+                    playerChess.GetComponent<Chess>().ChangePattern(PlayerPrefs.GetInt("PlayerChessPattern"));
                     ChessBoard[xPosition][yPosition] = 1;
                 }
                 else
                 {
-                    Instantiate(OpponentChess, ChessTransform[xPosition][yPosition]);
+                    GameObject aiChess = Instantiate(ChessObj, ChessTransform[xPosition][yPosition]);
+                    aiChess.GetComponent<Chess>().ChangePattern(PlayerPrefs.GetInt("AIChessPattern"));
                     ChessBoard[xPosition][yPosition] = -1;
                 }
                 GameReplay.Add(xPosition.ToString() + "," + yPosition.ToString());
@@ -186,7 +200,6 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
             CallAI?.Invoke(this, new EventArgs());
         }
     }
-
 
     public void RefreshPlayerTMP()
     {
@@ -385,6 +398,7 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
         HintTMP.gameObject.SetActive(true);
         Invoke(nameof(FirstTMPDisappear), 1.0f);
     }
+
     public void FirstTMPDisappear()
     {
         HintTMP.gameObject.SetActive(false);

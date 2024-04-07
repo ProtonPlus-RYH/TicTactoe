@@ -14,11 +14,19 @@ public class MenuManager : MonoSingleton<MenuManager>
     public GameObject ModeSelection;
     public GameObject NoReplayTMP;
 
+    public GameObject BgmPlayer;
+
     public Toggle SCLangToggle;
     public Toggle ENLangToggle;
 
     private void Start()
     {
+        //≥ı ºªØBGM
+        if (FindObjectOfType<BGMPlayer>() == null)
+        {
+            Instantiate(BgmPlayer, gameObject.transform.parent);
+        }
+
         if (!PlayerPrefs.HasKey("SEVolume"))
         {
             PlayerPrefs.SetInt("SEVolume", 50);

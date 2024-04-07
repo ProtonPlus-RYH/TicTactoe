@@ -139,7 +139,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 465236909993984
-    m_Localized: Current count of step
+    m_Localized: 'Current step count:'
     m_Metadata:
       m_Items: []
   - m_Id: 467300683722752
@@ -188,6 +188,17 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1168411866542080
     m_Localized: Chess Pattern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1441836568784896
+    m_Localized: BachGround Music Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1463596429193216
+    m_Localized: "Tic-Tac-toe is a game played on a grid of 3*3, which is similar
+      to an Asian chess game called \"Gomoku\". \nTwo players uses O and X as their
+      chesses, and play chess on the board in turn. If any of three same chesses
+      consists a line, the player owns those chesses wins.\n--From:\nhttps://baike.baidu.com/item/%E4%BA%95%E5%AD%97%E6%A3%8B/4467444?fr=ge_ala"
     m_Metadata:
       m_Items: []
   references:
