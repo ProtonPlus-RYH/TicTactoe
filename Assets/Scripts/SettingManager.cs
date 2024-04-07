@@ -98,6 +98,14 @@ public class SettingManager : MonoBehaviour
         if (BgmPlayer != null)
         {
             BgmPlayer.GetComponent<AudioSource>().volume = BGMVolume * 0.01f;
+            if (BgmPlayer.Audio.volume == 0)
+            {
+                BgmPlayer.Audio.Pause();
+            }
+            else
+            {
+                BgmPlayer.Audio.UnPause();
+            }
         }
     }
 

@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class ChessGameManager : MonoSingleton<ChessGameManager>
 {
@@ -106,10 +104,14 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
         {
            Hint(LanguageManager.Instance.GetLocalizedString("OpponentGoingFirst"));
         }
+        else
+        {
+            Hint(LanguageManager.Instance.GetLocalizedString("GameStart"));
+        }
         ifReplaySaved = false;
         TurnPlayerTransform.gameObject.SetActive(true);
-        Invoke(nameof(RefreshPlayerTMP), 1.0f);
-        Invoke(nameof(DoStopPause), 1.0f);
+        RefreshPlayerTMP();
+        DoStopPause();
         Invoke(nameof(CallAIEvent), 1.0f);
     }
 
