@@ -12,6 +12,7 @@ public class Blocks : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if(!ChessGameManager.Instance.ifVersusAI || ChessGameManager.Instance.ifPlayerOperating)
         ChessGameManager.Instance.AddChess(ChessGameManager.Instance.ifPlayerOperating, x, y);
     }
 }

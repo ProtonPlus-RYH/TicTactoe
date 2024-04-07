@@ -19,8 +19,6 @@ public class Setting_InGame : MonoBehaviour
 
     public Toggle SCLangToggle;
     public Toggle ENLangToggle;
-
-
     void Start()
     {
         //“Ù¡ø≥ı ºªØ

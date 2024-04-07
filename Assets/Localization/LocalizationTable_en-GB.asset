@@ -179,7 +179,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1167883514261504
-    m_Localized: Set Player to Go First (only in versus AI mode)
+    m_Localized: Set Player that Goes First (only in versus AI mode)
     m_Metadata:
       m_Items: []
   - m_Id: 1168325128335360
@@ -191,7 +191,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1441836568784896
-    m_Localized: BachGround Music Volume
+    m_Localized: BackGround Music Volume
     m_Metadata:
       m_Items: []
   - m_Id: 1463596429193216
@@ -199,6 +199,26 @@ MonoBehaviour:
       to an Asian chess game called \"Gomoku\". \nTwo players uses O and X as their
       chesses, and play chess on the board in turn. If any of three same chesses
       consists a line, the player owns those chesses wins.\n--From:\nhttps://baike.baidu.com/item/%E4%BA%95%E5%AD%97%E6%A3%8B/4467444?fr=ge_ala"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1519649439199232
+    m_Localized: Player First
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1519774660145152
+    m_Localized: AI First
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1520111752163328
+    m_Localized: Player
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1520162142531584
+    m_Localized: AI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1550015642316800
+    m_Localized: If chess of last step shines
     m_Metadata:
       m_Items: []
   references:

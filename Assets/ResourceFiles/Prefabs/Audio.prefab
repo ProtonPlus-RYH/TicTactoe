@@ -51,7 +51,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -149,3 +149,4 @@ MonoBehaviour:
   Hitoshizuku: {fileID: 8300000, guid: 6be79d7e1fb9c1547b9194c9fe294254, type: 3}
   Utakotoba: {fileID: 8300000, guid: 85a7c7d01485a6340b1d83f146e5c6a7, type: 3}
   Katyusha: {fileID: 8300000, guid: c01512361b6d92e4a8b0e2dae7a731cb, type: 3}
+  playingInt: 0

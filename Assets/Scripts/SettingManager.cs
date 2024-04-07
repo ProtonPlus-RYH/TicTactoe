@@ -28,6 +28,8 @@ public class SettingManager : MonoBehaviour
     public TMP_Dropdown PlayerPatternDropDown;
     public TMP_Dropdown AIPatternDropDown;
 
+    public Toggle PointerToggle;
+
     void Start()
     {
         //音量初始化
@@ -86,6 +88,13 @@ public class SettingManager : MonoBehaviour
             PlayerPrefs.SetInt("AIChessPattern", 3);
         }
         AIPatternDropDown.SetValueWithoutNotify(PlayerPrefs.GetInt("AIChessPattern")-1);
+
+        //棋子指示器初始化
+        if (!PlayerPrefs.HasKey("IfUsePointer"))
+        {
+            PlayerPrefs.SetInt("IfUsePointer", 1);
+        }
+        PointerToggle.isOn = (PlayerPrefs.GetInt("IfUsePointer")==1);
     }
 
     #region Volume settings
@@ -188,6 +197,22 @@ public class SettingManager : MonoBehaviour
 
     #endregion
 
+
+    #region Pointer setting
+
+    public void SetPointer()
+    {
+        if (PointerToggle.isOn)
+        {
+            PlayerPrefs.SetInt("IfUsePointer", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("IfUsePointer", 0);
+        }
+    }
+
+    #endregion
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("MainMenu");

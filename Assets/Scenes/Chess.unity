@@ -6202,6 +6202,7 @@ MonoBehaviour:
   GameResultTMP: {fileID: 378273783}
   ifVersusAI: 0
   TTTAI: {fileID: 6925524764985331523, guid: 86ef65bca43c42d4cbafaa513e1c394a, type: 3}
+  pointer: {fileID: 4297445408178084830, guid: 01131012fc38b1c45a522a2cecca69bb, type: 3}
 --- !u!1 &1692225322
 GameObject:
   m_ObjectHideFlags: 0

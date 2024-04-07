@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class ChessGameManager : MonoSingleton<ChessGameManager>
 {
@@ -33,6 +34,9 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
     [HideInInspector]
     public bool ifVersusAI;
     public GameObject TTTAI;
+
+    public GameObject pointer;
+    private int[] pointerPosition;
 
     void Start()
     {
@@ -125,7 +129,10 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
                 {
                     if (block.childCount > 0)
                     {
-                        Destroy(block.GetChild(0).GameObject());
+                        for (int i = 0; i < block.childCount; i++)
+                        {
+                            Destroy(block.GetChild(i).GameObject());
+                        }
                     }
                 }
             }
@@ -150,6 +157,7 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
                 ChessBoard[i / 3][i % 3] = 0;
             }
         }
+        pointerPosition = null;
         turnCount = 0;
     }
 
@@ -171,6 +179,12 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
                     aiChess.GetComponent<Chess>().ChangePattern(PlayerPrefs.GetInt("AIChessPattern"));
                     ChessBoard[xPosition][yPosition] = -1;
                 }
+                if (pointerPosition != null && ChessTransform[pointerPosition[0]][pointerPosition[1]].childCount == 2)
+                {
+                    Destroy(ChessTransform[pointerPosition[0]][pointerPosition[1]].GetChild(1).GameObject());
+                }
+                pointerPosition = new int[2] {xPosition, yPosition};
+                Instantiate(pointer, ChessTransform[xPosition][yPosition]);
                 GameReplay.Add(xPosition.ToString() + "," + yPosition.ToString());
 
                 if (CheckResult(xPosition, yPosition))
@@ -303,7 +317,7 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
 
     public void ReturnToLastStep()
     {
-        int currentReturnCount = 0;
+        int currentReturnCount = 1;
         SettingsDialog.SetActive(false);
         string[] lastPositionStr = null;
         for(int i=GameReplay.Count-1; i>=0; i--)
@@ -321,15 +335,23 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
                 currentReturnCount++;
             }
         }
-        if (lastPositionStr != null && lastPositionStr[0] != "Return")
+        if (pointerPosition != null)
         {
-            int[] lastPosition = new int[2] { int.Parse(lastPositionStr[0]), int.Parse(lastPositionStr[1]) };
-            Transform returnBlock = ChessTransform[lastPosition[0]][lastPosition[1]];
+            Transform returnBlock = ChessTransform[pointerPosition[0]][pointerPosition[1]];
             if (returnBlock.childCount > 0)
             {
-                Destroy(returnBlock.GetChild(0).GameObject());
+                for(int i=0; i<returnBlock.childCount; i++)
+                {
+                    Destroy(returnBlock.GetChild(i).GameObject());
+                }
             }
-            ChessBoard[lastPosition[0]][lastPosition[1]] = 0;
+            ChessBoard[pointerPosition[0]][pointerPosition[1]] = 0;
+            if (lastPositionStr != null)
+            {
+                int[] lastPosition = new int[2] { int.Parse(lastPositionStr[0]), int.Parse(lastPositionStr[1]) };
+                pointerPosition = new int[2] { lastPosition[0], lastPosition[1] };
+                Instantiate(pointer, ChessTransform[lastPosition[0]][lastPosition[1]]);
+            }
             ifPlayerOperating = !ifPlayerOperating;
             turnCount--;
             GameReplay.Add("Return");
