@@ -30,6 +30,8 @@ public class SettingManager : MonoBehaviour
 
     public Toggle PointerToggle;
 
+    public TMP_InputField ReturnLimitInput;
+
     void Start()
     {
         //音量初始化
@@ -95,6 +97,13 @@ public class SettingManager : MonoBehaviour
             PlayerPrefs.SetInt("IfUsePointer", 1);
         }
         PointerToggle.isOn = (PlayerPrefs.GetInt("IfUsePointer")==1);
+
+        //悔棋上限文本初始化
+        if (!PlayerPrefs.HasKey("ReturnLimit"))
+        {
+            PlayerPrefs.SetInt("ReturnLimit", 1);
+        }
+        ReturnLimitInput.text = PlayerPrefs.GetInt("ReturnLimit").ToString();
     }
 
     #region Volume settings
@@ -187,12 +196,26 @@ public class SettingManager : MonoBehaviour
 
     public void SetPlayerPattern()
     {
-        PlayerPrefs.SetInt("PlayerChessPattern", PlayerPatternDropDown.value + 1);
+        if(PlayerPatternDropDown.options[PlayerPatternDropDown.value + 1].image != AIPatternDropDown.options[AIPatternDropDown.value + 1].image)
+        {
+            PlayerPrefs.SetInt("PlayerChessPattern", PlayerPatternDropDown.value + 1);
+        }
+        else
+        {
+            PlayerPatternDropDown.SetValueWithoutNotify(PlayerPrefs.GetInt("PlayerChessPattern") - 1);
+        }
     }
 
     public void SetAIPattern()
     {
-        PlayerPrefs.SetInt("AIChessPattern", AIPatternDropDown.value + 1);
+        if (PlayerPatternDropDown.options[PlayerPatternDropDown.value + 1].image != AIPatternDropDown.options[AIPatternDropDown.value + 1].image)
+        {
+            PlayerPrefs.SetInt("AIChessPattern", AIPatternDropDown.value + 1);
+        }
+        else
+        {
+            AIPatternDropDown.SetValueWithoutNotify(PlayerPrefs.GetInt("AIChessPattern") - 1);
+        }
     }
 
     #endregion
@@ -213,6 +236,17 @@ public class SettingManager : MonoBehaviour
     }
 
     #endregion
+
+
+    #region Return limit setting
+
+    public void SetReturnLimit()
+    {
+        PlayerPrefs.SetInt("ReturnLimit", int.Parse(ReturnLimitInput.text));
+    }
+
+    #endregion
+
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("MainMenu");

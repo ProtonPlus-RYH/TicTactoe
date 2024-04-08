@@ -89,6 +89,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shiningSpeed: 0.5
-  maxTransparentValue: 0.4
+  maxTransparentValue: 0.5
   image: {fileID: 5304665021064688390}
   OriginalColor: {r: 1, g: 0.9803922, b: 0.92549026, a: 0}

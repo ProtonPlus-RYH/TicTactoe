@@ -230,7 +230,7 @@ public class ReplayManager : MonoBehaviour
 
     public void GoToSettings()
     {
-        SettingsDialog.SetActive(true);
+        SettingsDialog.SetActive(!SettingsDialog.activeSelf);
     }
 
 

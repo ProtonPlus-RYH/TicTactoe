@@ -38,10 +38,14 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
     public GameObject pointer;
     private int[] pointerPosition;
 
+    private int returnLimit;
+    public TextMeshProUGUI ReturnLimitTMP;
+    public TextMeshProUGUI ReturnLimitTitleTMP;
+
     void Start()
     {
         DoPause();
-
+        //初始化棋子样式
         if (!PlayerPrefs.HasKey("AIChessPattern"))
         {
             PlayerPrefs.SetInt("AIChessPattern", 3);
@@ -53,6 +57,7 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
         Chess1Image.GetComponent<Chess>().ChangePattern(PlayerPrefs.GetInt("PlayerChessPattern"));
         Chess2Image.GetComponent<Chess>().ChangePattern(PlayerPrefs.GetInt("AIChessPattern"));
 
+        //初始化AI
         if (PlayerPrefs.HasKey("AISuccessRate"))
         {
             if (PlayerPrefs.GetInt("AISuccessRate") == 0)//线下对战
@@ -74,6 +79,17 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
             Instantiate(TTTAI, transform.parent);
             Hint(LanguageManager.Instance.GetLocalizedString("Coining"));
             Invoke(nameof(InitializingGame), 1.0f);
+        }
+
+        //初始化悔棋次数上限
+        if (!PlayerPrefs.HasKey("ReturnLimit"))
+        {
+            PlayerPrefs.SetInt("ReturnLimit", 1);
+        }
+        if (!ifVersusAI)
+        {
+            ReturnLimitTMP.gameObject.SetActive(false);
+            ReturnLimitTitleTMP.gameObject.SetActive(false);
         }
     }
 
@@ -112,10 +128,18 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
         {
             Hint(LanguageManager.Instance.GetLocalizedString("GameStart"));
         }
+
+        returnLimit = PlayerPrefs.GetInt("ReturnLimit");
+        ReturnLimitTMP.text = returnLimit.ToString();
+
         ifReplaySaved = false;
+
         TurnPlayerTransform.gameObject.SetActive(true);
+
         RefreshPlayerTMP();
+
         DoStopPause();
+
         Invoke(nameof(CallAIEvent), 1.0f);
     }
 
@@ -317,53 +341,73 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
 
     public void ReturnToLastStep()
     {
-        int currentReturnCount = 1;
-        SettingsDialog.SetActive(false);
-        string[] lastPositionStr = null;
-        for(int i=GameReplay.Count-1; i>=0; i--)
+        if (returnLimit > 0 || !ifVersusAI)
         {
-            if (GameReplay[i] != "Return" && currentReturnCount==0)
+            int currentReturnCount = 1;
+            SettingsDialog.SetActive(false);
+            string[] lastPositionStr = null;
+            for (int i = GameReplay.Count - 1; i >= 0; i--)
             {
-                lastPositionStr = GameReplay[i].Split(",");
-                break;
-            }
-            else if(GameReplay[i] != "Return")
-            {
-                currentReturnCount--;
-            }else
-            {
-                currentReturnCount++;
-            }
-        }
-        if (pointerPosition != null)
-        {
-            Transform returnBlock = ChessTransform[pointerPosition[0]][pointerPosition[1]];
-            if (returnBlock.childCount > 0)
-            {
-                for(int i=0; i<returnBlock.childCount; i++)
+                if (GameReplay[i] != "Return" && currentReturnCount == 0)
                 {
-                    Destroy(returnBlock.GetChild(i).GameObject());
+                    lastPositionStr = GameReplay[i].Split(",");
+                    break;
+                }
+                else if (GameReplay[i] != "Return")
+                {
+                    currentReturnCount--;
+                }
+                else
+                {
+                    currentReturnCount++;
                 }
             }
-            ChessBoard[pointerPosition[0]][pointerPosition[1]] = 0;
-            if (lastPositionStr != null)
+            if (pointerPosition != null)
             {
-                int[] lastPosition = new int[2] { int.Parse(lastPositionStr[0]), int.Parse(lastPositionStr[1]) };
-                pointerPosition = new int[2] { lastPosition[0], lastPosition[1] };
-                Instantiate(pointer, ChessTransform[lastPosition[0]][lastPosition[1]]);
+                if (lastPositionStr != null || !ifVersusAI)
+                {
+                    Transform returnBlock = ChessTransform[pointerPosition[0]][pointerPosition[1]];
+                    if (returnBlock.childCount > 0)
+                    {
+                        for (int i = 0; i < returnBlock.childCount; i++)
+                        {
+                            Destroy(returnBlock.GetChild(i).GameObject());
+                        }
+                    }
+                    ChessBoard[pointerPosition[0]][pointerPosition[1]] = 0;
+                    if (lastPositionStr != null)
+                    {
+                        int[] lastPosition = new int[2] { int.Parse(lastPositionStr[0]), int.Parse(lastPositionStr[1]) };
+                        pointerPosition = lastPosition;
+                        Instantiate(pointer, ChessTransform[lastPosition[0]][lastPosition[1]]);
+                    }
+                    ifPlayerOperating = !ifPlayerOperating;
+                    turnCount--;
+                    GameReplay.Add("Return");
+                    RefreshPlayerTMP();
+                    if (!ifPlayerOperating && ifVersusAI)
+                    {
+                        ReturnToLastStep();
+                    }
+                    else
+                    {
+                        returnLimit--;
+                        ReturnLimitTMP.text = returnLimit.ToString();
+                    }
+                }
+                else
+                {
+                    Hint(LanguageManager.Instance.GetLocalizedString("IsStartState"));
+                }
             }
-            ifPlayerOperating = !ifPlayerOperating;
-            turnCount--;
-            GameReplay.Add("Return");
-            RefreshPlayerTMP();
-            if(!ifPlayerOperating && ifVersusAI)
+            else
             {
-                ReturnToLastStep();
+                Hint(LanguageManager.Instance.GetLocalizedString("IsStartState"));
             }
         }
         else
         {
-            Hint(LanguageManager.Instance.GetLocalizedString("IsStartState"));
+            Hint(LanguageManager.Instance.GetLocalizedString("OverReturnLimit"));
         }
     }
 
@@ -382,7 +426,7 @@ public class ChessGameManager : MonoSingleton<ChessGameManager>
 
     public void GoToSettings()
     {
-        SettingsDialog.SetActive(true);
+        SettingsDialog.SetActive(!SettingsDialog.activeSelf);
     }
 
     public void Surrender()

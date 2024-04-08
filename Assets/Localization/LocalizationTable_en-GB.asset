@@ -175,7 +175,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1167800576094208
-    m_Localized: Sound Effect Volume
+    m_Localized: SE Volume
     m_Metadata:
       m_Items: []
   - m_Id: 1167883514261504
@@ -191,7 +191,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1441836568784896
-    m_Localized: BackGround Music Volume
+    m_Localized: BGM Volume
     m_Metadata:
       m_Items: []
   - m_Id: 1463596429193216
@@ -219,6 +219,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1550015642316800
     m_Localized: If chess of last step shines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1763454839009280
+    m_Localized: 'Remain:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1769066683543552
+    m_Localized: Limit of Undo (only in versus AI mode)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1777403894542336
+    m_Localized: Limit of undo had been reached
     m_Metadata:
       m_Items: []
   references:
